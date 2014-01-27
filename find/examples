@@ -1,0 +1,3 @@
+get directories and set permissions to 0445 under /var/www
+
+find /var/www/ -type d -print0 | xargs -0 -I {} chmod 0445 {}
