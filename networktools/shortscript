@@ -1,0 +1,42 @@
+Network Tools for Linux Systemes
+
+Linux network settings in a shell script
+
+get Network iP short script
+command: ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'
+output: 192.168.0.1 IP for each network interface
+
+for Germen users 
+command: ifconfig  | grep 'inet Adresse:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'
+output: 192.168.0.1 IP for each network interface
+
+get IP short script
+command: getmyip | cut -d. -f 4 # is working on CentOS 4
+output: 1
+
+
+ifconfig and netstat can be used to identify other network settings:
+
+myIP=$(ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}')
+mySubnet=$(ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | cut -d. -f1,2,3 | awk '{ print $1}')
+myMask=$(ifconfig | grep 'Mask:'| grep -v '127.0.0.1' | cut -d: -f4 | awk '{ print $1}')
+myBcast=$(ifconfig | grep 'Bcast:'| grep -v '127.0.0.1' | cut -d: -f3 | awk '{ print $1}')
+myBase=$(netstat -r | grep $myMask | awk '{ print $1}')
+myGateway=$(netstat -r | grep 'default' | awk '{ print $2}')
+
+command: echo $myIP --- $mySubnet --- $myMask --- $myBcast --- $myBase --- $myGateway
+output:       192.168.0.101 --- 192.168.0 --- 255.255.255.0 --- 192.168.0.255 --- 192.168.0.0 --- 192.168.0.1
+
+myAdapter=$(ifconfig | grep -m1 'encap:Ethernet' | cut -d' ' -f1)
+
+
+
+myAdapter=$(ifconfig | grep 'encap:' | grep -m1 -v 'encap:Local' | cut -d' ' -f1)
+
+
+test with echo
+command: echo $myAdapter
+
+
+
+Source: http://www.ehartwell.com/InfoDabble/HowTo:_Read_Linux_network_settings_in_a_shell_script
