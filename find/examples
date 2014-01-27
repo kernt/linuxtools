@@ -1,3 +1,43 @@
 get directories and set permissions to 0445 under /var/www
 
 find /var/www/ -type d -print0 | xargs -0 -I {} chmod 0445 {}
+
+Finding files and printing their full name
+
+You wish to find out all *.c (all c source code) files located under /home directory, enter:
+$ find /home -name "*.c"
+
+You would like to find httpd.conf file location:
+$ find / -name httpd.conf
+Finding all files owned by a user
+
+Find out all files owned by user vivek:
+# find / -user vivek
+
+Find out all *.sh owned by user vivek:
+# find / -user vivek -name "*.sh"
+Finding files according to date and time
+
+Files not accessed in a time period – It is useful to find out files that have or have not been accessed within a specified number of days. Following command prints all files not accessed in the last 7 days:
+# find /home -atime +7
+
+    -atime +7: All files that were last accessed more than 7 days ago
+    -atime 7: All files that were last accessed exactly 7 days ago
+    -atime -7: All files that were last accessed less than7 days ago
+
+Finding files modified within a specified time – Display list of all files in /home directory that were not last modified less than then days ago.
+# find /home -mtime -7
+Finding newer (more recently) modified files
+
+Use -newer option to find out if file was modified more recently than given file.
+# find /etc/apache-perl -newer /etc/apache-perl/httpd.conf
+Finding the most recent version of file
+
+It is common practice before modifying the file is copied to somewhere in system. For example whenever I modify web server httpd.conf file I first make backup. Now I don't remember whether I had modified the /backup.conf/httpd.conf or /etc/apache-perl/httpd.conf. You can use the find command as follows (tip you can also use ls -l command):
+find / -name httpd.conf -newer /etc/apache-perl/httpd.conf
+Locate command
+
+The locate command is often the simplest and quickest way to find the locations of files and directories on Linux and other Unix-like operating systems.
+
+For example, the following command uses the star wildcard to display all files on the system that have the .c filename extension:
+# locate "*.c"
