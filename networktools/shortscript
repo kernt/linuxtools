@@ -40,3 +40,97 @@ command: echo $myAdapter
 
 
 Source: http://www.ehartwell.com/InfoDabble/HowTo:_Read_Linux_network_settings_in_a_shell_script
+
+list abusive IP address
+command: # netstat -nat | awk '{print $6}' | sort | uniq -c | sort -n
+
+Dig out more information about a specific ip address
+command: netstat -nat |grep {IP-address} | awk '{print $6}' | sort | uniq -c | sort -n
+
+
+list of all unique IP address connected to server
+command: netstat -nat | awk '{ print $5}' | cut -d: -f1 | sed -e '/^$/d' | uniq
+
+print total of all unique IP address
+netstat -nat | awk '{ print $5}' | cut -d: -f1 | sed -e '/^$/d' | uniq | wc -l
+
+print out a list of open connections
+netstat -atun | awk '{print $5}' | cut -d: -f1 | sed -e '/^$/d' |sort | uniq -c | sort -n
+
+Display Summary Statistics for Each Protocol
+netstat -s | less
+netstat -t -s | less
+netstat -u -s | less
+netstat -w -s | less
+netstat -s
+
+Display Interface Table
+
+netstat --interfaces eth0
+
+monitor TCP port 25 (SMTP)
+
+tcptrack -i eth0 port 25
+
+Fast list open Ports
+netstat -tulanp
+
+#pass it via sudo so whoever is admin can reload it without calling you #
+alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
+alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
+alias lightyload='sudo /etc/init.d/lighttpd reload'
+alias lightytest='sudo /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf -t'
+alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
+
+# if cron fails or if you want backup on demand just run these commands # 
+# again pass it via sudo so whoever is in admin group can start the job #
+# Backup scripts #
+
+alias httalias backup='sudo /home/scripts/admin/scripts/backup/wrapper.backup.sh --type local --taget /raid1/backups'
+alias nasbackup='sudo /home/scripts/admin/scripts/backup/wrapper.backup.sh --type nas --target nas01'
+alias s3backup='sudo /home/scripts/admin/scripts/backup/wrapper.backup.sh --type nas --target nas01 --auth /home/scripts/admin/.authdata/amazon.keys'
+alias rsnapshothourly='sudo /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias rsnapshotdaily='sudo  /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys  --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias rsnapshotweekly='sudo /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys  --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias rsnapshotmonthly='sudo /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys  --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias amazonbackup=s3backuppdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
+
+
+
+
+ ## pass options to free ## 
+alias meminfo='free -m -l -t'
+ 
+## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+ 
+## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+ 
+## Get server cpu info ##
+alias cpuinfo='lscpu'
+ 
+## older system use /proc/cpuinfo ##
+##alias cpuinfo='less /proc/cpuinfo' ##
+ 
+## get GPU ram on desktop / laptop## 
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+## set some other defaults ##
+alias df='df -H'
+alias du='du -ch'
+ 
+# top is atop, just like vi is vim
+alias top='atop'
+ 
+## nfsrestart  - must be root  ##
+## refresh nfs mount / cache etc for Apache ##
+alias nfsrestart='sync && sleep 2 && /etc/init.d/httpd stop && umount netapp2:/exports/http && sleep 2 && mount -o rw,sync,rsize=32768,wsize=32768,intr,hard,proto=tcp,fsc natapp2:/exports /http/var/www/html &&  /etc/init.d/httpd start'
+ 
+## Memcached server status  ##
+alias mcdstats='/usr/bin/memcached-tool 10.10.27.11:11211 stats'
+alias mcdshow='/usr/bin/memcached-tool 10.10.27.11:11211 display'
+
+
