@@ -1,0 +1,10 @@
+Use this script to run Apache 2.x with mod_fastcgi. Install Apache 22 from FreeBSD port or using source code. The script is tested under FreeBSD and Debian / RHEL / CentOS Linux.
+How do I use script?
+
+Download the script
+
+Put in cgi-bin directory as php.cgi
+
+Set permission
+
+Configure mod_fastcgi_httpd.conf as follows for mod_fastcgi.sh:
