@@ -1,10 +1,11 @@
-#!/bin/sh
-#
-#
-#
-#
-#
 
+#!/bin/bash
+#
+# Script-Name : $SCRIPTNAME.sh
+# Version : $VERSION
+# Autor : $AUTUR
+# Datum : $DATE
+# Lizenz : GPLv3
 
 list=$1
 shift
