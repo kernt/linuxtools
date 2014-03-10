@@ -1,13 +1,15 @@
-
 #!/bin/bash
 #
-# Script-Name : $SCRIPTNAME.sh
-# Version : $VERSION
-# Autor : $AUTUR
-# Datum : $DATE
+# Script-Name : clone_debian.sh
+# Version : 0.01
+# Autor : Tobias Kern
+# Datum : Mo 10 Mär 2014 11:58:58 CET
 # Lizenz : GPLv3
 
 list=$1
 shift
 aptitude -q -R --schedule-only install $(awk < $list '{print $1}')
 aptitude -q -R --schedule-only markauto $(awk < $list '$2=="A" {split($1,A,"=");print A[1]}')
+
+
+exit 0
