@@ -1,0 +1,16 @@
+# Info with 
+#ldd $(type -p ssh)
+
+#source http://www.fuschlberger.net/programs/ssh-scp-sftp-chroot-jail/make_chroot_jail.sh
+#       http://www.cyberciti.biz/faq/unix-linux-chroot-command-examples-usage-syntax/
+#        http://allanfeid.com/content/creating-chroot-jail-ssh-access
+#
+# copy lic step by step
+list="$(ldd /bin/ls | egrep -o '/lib.*\.[0-9]')"
+for i in $list; do cp  -v "$i" "${J}${i}"; done
+
+#service in chrooted jail or not
+pid=$(pidof -s master)
+ls -ld /proc/$pid/root
+
+#
