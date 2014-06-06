@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# Script-Name : $SCRIPTNAME.sh
+# Script-Name : git_ins_snoopy.sh
 # Version : 0.01
-# Autor : $AUTUR
-# Datum : $DATE
+# Autor : Tobias Kern
+# Datum : 06.06.2014
 # Lizenz : GPLv3
 # Depends : autoconf make 
 # Use :
@@ -14,8 +14,16 @@
 ## Some Info and so one.
 ##
 ###########################################################################################
-autoconf
-./configure
-make
-make install
-make enable
+
+
+# example for tarball
+#autoconf
+#./configure
+#make
+#make install
+#make enable
+
+
+# install on Debian  Linux system
+apt-get install snoopy
+
