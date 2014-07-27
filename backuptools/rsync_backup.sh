@@ -2,10 +2,11 @@
 #
 #
 # Simple backup with rsync (version 2011-03-10)
+# 
 # local-mode, tossh-mode, fromssh-mode
 
 # sources and target MUST end WITH slash
-SOURCES="/root/ /etc/ /home/ /boot/"
+SOURCES="/root/ /etc/ /home/ /lib/ /bin/ /sbin/ /mnt/ /media/ /srv/"
 TARGET="/media/backup/"
 
 RSYNCCONF="--delete"
@@ -13,7 +14,7 @@ RSYNCCONF="--delete"
 #MOUNTPOINT="/media/backup"     # mountpoint must end WITHOUT slash
 PACKAGES=0	
 MONTHROTATE=1
-MAILREC="user@localhost"
+MAILREC="tobkern1980@googlemail.com"
 
 #SSHUSER="root"
 #SSHPORT=22 
@@ -27,6 +28,19 @@ LN="/bin/ln"; ECHO="/bin/echo"; DATE="/bin/date"; RM="/bin/rm"
 DPKG="/usr/bin/dpkg"; AWK="/usr/bin/awk"; MAIL="/usr/bin/mail"
 CUT="/usr/bin/cut"; TR="/usr/bin/tr"; RSYNC="/usr/bin/rsync"
 LAST="last"; INC="--link-dest=../$LAST"
+
+# a new way to set binary tools in Linux environment
+# added on 2014 Juli  27
+#MOUNT=$(type -p mount)
+#FGREP=$(type -p fgrep)
+#SSH=$(ssh)
+#LN=$(ln)
+#ECHO=$(type -p echo)
+#DATE=$(type -p dates)
+#RM=$(type -p rm)
+#DPKG=$(type -p dpkg)
+#AWK=$(
+
 
 LOG=$0.log
 $DATE > $LOG
