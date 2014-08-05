@@ -1,0 +1,23 @@
+function colorssh() {
+   if [ $# -gt 2 ]
+     then
+       # colorize only for simple ssh commands
+       ssh "#@"
+       return;
+   fi
+   host=$1;
+   array=(`cat ~/.ssh/host_colors | egrep "^\s*$host\s+" | sed -e "s/^\s*//" | sed -e "s/\s\s*/ /"`)
+   backg=${array[1]}
+   foreg=${array[2]}
+   if [ -z $backg ]
+     then 
+       backg="0x111111"; 
+   fi
+   if [ -z $foreg ]
+    then 
+      foreg="0xffffff"; 
+    fi
+   colorize -b $backg -f $foreg ssh "$@" 
+}
+
+alias ssh=colorssh
