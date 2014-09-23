@@ -1,0 +1,2 @@
+ grep -Ev '^(#|$)' /Path/to/file # Print lines without "#" to your Termianl.
+ 
