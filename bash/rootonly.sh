@@ -14,7 +14,7 @@ SKRIPTNAME=$@
 
 # Pruefung ob Root das Script ausfuert
 
-  if [ `id -u` != 0 ]; then
+  if [ $(id -u) != 0 ]; then
     echo "Das Script kann nur als Benutzer Root Ausgefuehrt werden!"
     sleep 2
     exit 1
