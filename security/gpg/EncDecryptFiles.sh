@@ -1,18 +1,15 @@
 # 
 # Version : alpha 0.01
-# 
-# 
-# 
 #gnupg
 #
 #GnuPG stands for GNU Privacy Guard and is GNU's tool for secure communication and data storage. It can be used to encrypt data and to create digital signatures. It includes an advanced key management facility.
 #ncrypting a file in linux
 #
 #o encrypt a single file, use command gpg as follows:
-#gpg -c filename
+gpg -c filename
 #
 ##o encrypt myfinancial.info.txt file, type the command:
-# gpg -c myfinancial.info.txt
+gpg -c myfinancial.info.txt
 #Simple output:
 #
 #Enter passphrase:<YOUR-PASSWORD>
