@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 #
 # Script-Name : activate_lvm.de.sh
-# Version     : $VERSION
-# Autor       : $AUTUR
-# Datum       : 
+# Version     : 0.1
+# Autor       : Tobias Kern
+# Datum       : 27.11.2011
 # Lizenz      : GPLv3
 # Depends     : lvm2
 # Use         : execute only
