@@ -1,0 +1,90 @@
+# check if the user gave the 1st parameter to a function
+
+function a {
+    ?? if $1 is set
+}
+
+# test for SomeString simple
+# Add -q option when you don't need the string displayed when it was found.
+if grep -q SomeString "$File"; then
+   Some Actions
+fi
+
+# test for SomeString simple extended version
+#
+if grep $SearchTerm $FileToSearch; then
+   echo "$SearchTerm found OK"
+else
+   echo "$SearchTerm not found"
+fi
+
+# is foo command is already available
+command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
+
+# is foo is already available
+type foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
+
+# # is foo command is already available
+hash foo 2>/dev/null || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
+
+grep "foo" bar 2>/dev/null || { echo >&2 "I require line but it's available.  Aborting."; exit 1; }
+
+# a function that runs gdate if it exists, otherwise date:
+gnudate() {
+    if hash gdate 2>/dev/null; then
+        gdate "$@"
+    else
+        date "$@"
+    fi
+}
+
+
+# test needed commands 
+NEEDED_COMMANDS="jlex byaccj ant javac"
+
+for cmd in ${NEEDED_COMMANDS} ; do
+    if ! command -v ${cmd} &> /dev/null ; then
+        echo Please install ${cmd}!
+        exit 1
+    fi
+done
+
+
+touch .cmd_ok
+
+
+# simple test is available
+#
+FILE="$1"
+
+if [ -s $1 ]
+then
+   echo "File is available"
+else
+      echo "File is not available"
+fi
+
+# output only unique line in a txt file
+sort -u file.txt
+awk '!a[$0]++' input.txt
+
+
+#split srings
+IN="bla@some.com;john@home.com"
+
+arr=$(echo $IN | tr ";" "\n")
+
+for x in $arr
+do
+    echo "> [$x]"
+done
+
+# Qutput
+#> [bla@some.com]
+#> [john@home.com]
+
+# Remove Duplicate Text Lines
+
+sort {file-name} | uniq -u
+sort file.log | uniq -u
+
