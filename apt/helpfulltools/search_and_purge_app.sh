@@ -18,7 +18,8 @@
 
 APP="$1"
 
+ALLINSTALLED=$(aptitude search '~i $' -F ' %p' --disable-columns)
 
-aptitude purge $(aptitude search "$APP" | grep "^i" | awk '{print $2}')
+DEINSAPP=$(aptitude purge $(aptitude search "$APP" | grep "^i" | awk '{print $2}')
 
 exit 0
