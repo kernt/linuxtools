@@ -15,6 +15,8 @@
 ## Some Info and so one.
 ##
 ###########################################################################################
+#########                            ERROR Codes                          #################
+###########################################################################################
 # Name of your script.
 SCRIPTNAME=$(basename $0.sh)
 # exit code without any error
@@ -25,10 +27,25 @@ EXIT_FAILURE=1
 EXIT_ERROR=2
 # unknown ERROR 
 EXIT_BUG=10
+##################################################################################################
+########## Bach environmentvaribles
+##################################################################################################
+# Posision from funktion to script
+POSTOFONCA="*"
+
+# Posision from funktion to script
+POSTOFONCONCE="@"
+
+# Options by execute bash
+BASCHEXECOP="-"
+
+# Exit state from last command
+STATELASTCOMMAND="?"
 
 # Variable for optionsswitch
 #OPTFILE=""
 fbname=$(basename "$1".txt)
+
 
 # simple help funktion
 function usage {
