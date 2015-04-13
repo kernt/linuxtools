@@ -1,0 +1,4 @@
+# delete ESDA key from known hosts list
+ssh-keygen -f "/home/tobkern/.ssh/known_hosts" -R 192.168.4.106
+
+
