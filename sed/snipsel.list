@@ -1,4 +1,8 @@
-ZEILEN-ABSTÄNDE:
+######### Zeichen ersetzen:#########################################################################################
+
+
+
+######### ZEILEN-ABSTÄNDE:###########################################################################################
 
  # Doppelter Zeilenvorschub
  sed G
@@ -14,6 +18,8 @@ ZEILEN-ABSTÄNDE:
  # (Annahme: jede zweite Zeile ist leer)
  sed 'n;d'
 
+##### leerzeilen ######################################################################################################
+
  # Füge eine Leerzeile über jeder Zeile ein, die "regex" enthält
  sed '/regex/{x;p;x;}'
 
@@ -23,7 +29,7 @@ ZEILEN-ABSTÄNDE:
  # Füge eine Leerzeile über und unter jeder Zeile ein, die "regex" enthält
  sed '/regex/{x;p;x;G;}'
 
-Nummerierung
+###### Nummerierung ##################################################################################################
 
  # Nummeriere alle Zeilen (linksbündig). Der Tabulator anstelle von Leerzeichen
  # erhält den Rand. (siehe auch die Bemerkung zu '\t' am Ende dieser Datei)
@@ -38,20 +44,20 @@ Nummerierung
  # Zeilen zählen (Nachahmung von "wc -l")
  sed -n '$='
 
-TEXT UMWANDLUNG UND ERSETZUNG:
+##### Text UMWANDLUNG UND ERSETZUNG:
 
- # IN EINER UNIX UMGEBUNG: Wandle DOS Zeilenvorschübe (CR/LF) in das Unix-Format.
+##### IN EINER UNIX UMGEBUNG: Wandle DOS Zeilenvorschübe (CR/LF) in das Unix-Format.
  sed 's/.$//'               # Annahme: Alle Zeilen enden mit CR/LF
  sed 's/^M$//'              # Bei bash/tcsh: Ctrl-V dann Ctrl-M
  sed 's/\x0D$//'            # für ssed, gsed 3.02.80 oder neuere Versionen
 
- # IN EINER UNIX UMGEBUNG: Wandle Unix Zeilenvorschübe (LF) in das DOS-Format.
+#### IN EINER UNIX UMGEBUNG: Wandle Unix Zeilenvorschübe (LF) in das DOS-Format.
  sed "s/$/`echo -e \\\r`/"            # ksh
  sed 's/$'"/`echo \\\r`/"             # bash
  sed "s/$/`echo \\\r`/"               # zsh
  sed 's/$/\r/'                        # gsed 3.02.80 oder neuere Versionen
 
- # IN EINER DOS UMGEBUNG: Wandle Unix Zeilenvorschübe (LF) in das DOS-Format.
+#### IN EINER DOS UMGEBUNG: Wandle Unix Zeilenvorschübe (LF) in das DOS-Format.
  sed "s/$//"                          # Möglichkeit 1
  sed -n p                             # Möglichkeit 2
 
@@ -93,7 +99,8 @@ TEXT UMWANDLUNG UND ERSETZUNG:
  sed 's/foo/bar/g'                   # Ersetzt ALLE Vorkommen von "foo" mit "bar"
  sed 's/\(.*\)foo\(.*foo\)/\1bar\2/' # Ersetzt nur das vorletzte Vorkommen pro Zeile
  sed 's/\(.*\)foo/\1bar/'            # Ersetzt nur das letzte Vorkommen pro Zeile
-
+  #  . durch - ersetzen in einer zeile
+ sed  -e 's/\./-/g'  ./datei
 
  # Ersetze "foo" mit "bar" NUR in Zeilen die "baz" enthalten
  sed '/baz/s/foo/bar/g'
@@ -134,7 +141,7 @@ TEXT UMWANDLUNG UND ERSETZUNG:
  gsed '0~5G'                  # GNU sed
  sed 'n;n;n;n;G;'             # andere seds
 
-DRUCKEN AUSGEWÄHLTER ZEILEN:
+#####DRUCKEN AUSGEWÄHLTER ZEILEN: #####################################################################################
 
  # Ausgabe der ersten 10 Zeilen einer Datei (wie "head")
  sed 10q
@@ -286,7 +293,7 @@ LÖSCHUNG BESTIMMTER ZEILEN:
  # Lösche die letzte Zeile jedes Absatzes
  sed -n '/^$/{p;h;};/./{x;/./p;}'
 
-SPEZIELLE EINSATZGEBIETE:
+#####SPEZIELLE EINSATZGEBIETE:#######################################################################################
 
  # Entferne nroff "overstrikes" (char, Rückschritt) aus Man-Seiten.
  # Die 'echo' Anweisung braucht eventuell die Option -e für die Unix System V shell oder bash.
@@ -360,7 +367,7 @@ von einer Datei statt von der Befehlszeile zu benutzen sind in "sed &
 awk, 2nd Edition," von Dale Dougherty und Arnold Robbins (O'Reilly,
 1997; http://www.ora.com), "UNIX Text Processing," von Dale Dougherty
 und Tim O'Reilly (Hayden Books, 1987) oder in den Anleitungen von Mike Arst
-die als U-SEDIT2.ZIP au vielen Seiten zum Download bereit stehen zu finden.
+die als U-SEDIT2.ZIP auf vielen Seiten zum Download bereit stehen zu finden.
 
 Um alle Möglichkeiten von sed zu nutzen, muss man Reguläre Ausdrücke
 verstehen. Hierfür können folgende Bücher herangezogen werden:
@@ -405,13 +412,12 @@ von sed benutzen lässt, auch wenn die beliebten GNU-Versionen von sed eine
 elegantere Schreibweise erlauben würden.
 Wem man einen ziemlich langen Befehl wie den folgenden sieht:
 
-
-   sed -e '/AAA/b' -e '/BBB/b' -e '/CCC/b' -e d
+ sed -e '/AAA/b' -e '/BBB/b' -e '/CCC/b' -e d
 
 ist es gut zu wissen, dass man diesen mit GNU-sed zu folgendem kürzen kann:
 
-   sed '/AAA/b;/BBB/b;/CCC/b;d'      # oder sogar
-   sed '/AAA\|BBB\|CCC/b;d'
+ sed '/AAA/b;/BBB/b;/CCC/b;d'      # oder sogar
+ sed '/AAA\|BBB\|CCC/b;d'
 
 Ausserdem ist zu beachten, dass obwohl viele Versionen von sed einen Befehl 
 wie "/one/ s/RE1/RE2/" erlauben, einige "/one/! s/RE1/RE2/" NICHT erlauben,
@@ -423,13 +429,13 @@ Falls die ausfürungsgeschwindigkeit wegen großen Dateien oder langsamen CPUs
 bzw. Festplatten erhöht werden muss, können Ersetzungen beschleunigt werden,
 indem der gesuchte Ausdruck vor dem "s/.../.../" genannt wird. Es gilt:
 
-   sed 's/foo/bar/g' filename         # Normales Suchen & Ersetzen
-   sed '/foo/ s/foo/bar/g' filename   # Schnellere Version
-   sed '/foo/ s//bar/g' filename      # sed Kurzschreibweise
+ sed 's/foo/bar/g' filename         # Normales Suchen & Ersetzen
+ sed '/foo/ s/foo/bar/g' filename   # Schnellere Version
+ sed '/foo/ s//bar/g' filename      # sed Kurzschreibweise
 
 Wenn bei der Auswahl oder Löschung von Zeilen nur Zeilen aus dem Dateianfang
 ausgegeben werden sollen, verkürzt bei großen Dateien ein "quit" Befehl (q)
 die Bearbeitungszeit erheblich. Daher:
 
-   sed -n '45,50p' filename           # Ausgabe der Zeilen 45-50 einer Datei
-   sed -n '51q;45,50p' filename       # dito, aber biel schneller.
+ sed -n '45,50p' filename           # Ausgabe der Zeilen 45-50 einer Datei
+ sed -n '51q;45,50p' filename       # dito, aber viel schneller.
