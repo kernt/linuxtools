@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# /svn/repos/hooks/check_txn_size.py "$REPOS" "$TXN" || exit 1
+# http://www.davidgrant.ca/limit_size_of_subversion_commits_with_this_hook
+
 import sys,os,popen2
  
 MAX_BYTES = 1024000
