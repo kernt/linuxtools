@@ -1,4 +1,5 @@
-#!/usr/bin/python                                                                                                                        
+#!/usr/bin/python
+# http://askubuntu.com/questions/87956/can-you-set-passwords-in-ssh-config-to-allow-automatic-login
 import argparse
 from ConfigParser import ConfigParser
 import pexpect
