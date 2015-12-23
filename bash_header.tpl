@@ -2,9 +2,9 @@
 #
 # Script-Name	: $@.sh
 # Version	    : 0.01
-# Autor		    : Tobias Kern
-# Datum		    : $DATE
-# Lizenz	    : GPLv3
+# Autor		     : Tobias Kern
+# Datum		     : $DATE
+# Lizenz	     : GPLv3
 # Depends     :
 # Use         :       
 # 
@@ -30,14 +30,14 @@ EXIT_BUG=10
 ##################################################################################################
 ########## Bach environmentvaribles
 ##################################################################################################
-# Posision from funktion to script
+# Posision from function to script
 POSTOFONCA="*"
 
-# Posision from funktion to script
+# Posision from function to script
 POSTOFONCONCE="@"
 
 # Options by execute bash
-BASCHEXECOP="-"
+BACHEXECOP="-"
 
 # Exit state from last command
 STATELASTCOMMAND="?"
