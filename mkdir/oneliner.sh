@@ -13,3 +13,5 @@ seq 65 90 \
     | while read foo; do printf "%b\n" `printf '\\\\x%x\n' $foo`; done \
     | xargs mkdir
     
+# Sources
+http://wiki.bash-hackers.org/syntax/expansion/brace
