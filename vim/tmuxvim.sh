@@ -1,3 +1,7 @@
+#!/bin/bash
+#
+
+
 cp vimrc ~/.vimrc
 mkdir -p ~/.vim/bundle
 
@@ -20,6 +24,7 @@ Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual
 call vundle#end()
 filetype plugin indent on
 EOF
+
 
 vim +PluginInstall
 
