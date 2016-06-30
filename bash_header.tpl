@@ -1,5 +1,6 @@
 #!/bin/bash
-#
+# Sources:   http://www.gmarik.info/blog/2016/5-tips-for-solid-bash-code/
+#            
 # Script-Name	: $@.sh
 # Version	    : 0.01
 # Autor		     : Tobias Kern
@@ -12,8 +13,29 @@
 #
 # Description:
 ###########################################################################################
-## Some Info and so one.
+# -e      Exit immediately if a pipeline (which may consist of a single simple command), 
+#         a list, or a compound command, exits with a non-zero status.
+#  -x     After expanding each simple command, for command, case command, 
+#         select command, or arithmetic for command, display the expanded value of PS4, 
+#         followed by the command and its expanded arguments or associated word list.
+###
+#  ${parameter:?word}     Display Error if Null or Unset. If parameter is null or unset, 
+#                         the expansion of word (or a message to that effect if word is not present) 
+#                         is written to the standard error and the shell, 
+#                         if it is not interactive, exits. Otherwise, the value of parameter is substituted.
+# a example:
+#
+#$ echo ${HOME?"Must be set"}
+#/Users/gmarik
+#
+#$ echo ${DOME?"Must be set"}
+#-bash: DOME: Must be set
+#
+#$ echo $?
+#1
 ##
+# 
+#
 ###########################################################################################
 #########                            ERROR Codes                          #################
 ###########################################################################################
@@ -46,9 +68,9 @@ STATELASTCOMMAND="?"
 #OPTFILE=""
 fbname=$(basename "$1".txt)
 
-
 # simple help funktion
 function usage {
  echo "Usage: $SCRIPTNAME [-h] [-v] [-o arg] file ..." >&2
  [[ $# -eq 1 ]] && exit $1 || exit $EXIT_FAILURE
 }
+
