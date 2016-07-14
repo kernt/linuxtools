@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 # GNU find + bash4 / ksh93v / zsh
 # Get the largest file matching pattern in the given directories recursively
 ${ZSH_VERSION+false} || emulate ksh
