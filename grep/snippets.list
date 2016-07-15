@@ -1,2 +1,37 @@
  grep -Ev '^(#|$)' /Path/to/file # Print lines without "#" to your Termianl.
  
+#Display Number of Lines Before or After Search String
+#
+#Another couple of options are the –A and –B switches, 
+#which displays the matched line and number of lines either that come before or after the search string. 
+#While the man page gives a more detailed explanation, I find it easiest to remember the options as –A = after, 
+#and –B = befo
+#
+ifconfig | grep –A 4 eth0
+#
+ifconfig | grep  -B 2 UP
+
+
+#Prints Number of Lines Around Match
+
+#The grep’s –C option is similar, but instead of printing the lines that come either before or after the string,
+#it prints the lines in either direction:
+
+ifconfig | grep –C 2 lo
+
+
+#Count Number of Matches
+
+#Similar to piping a grep string to word count (wc program) grep’s built-in option can perform the same for you:
+# ifconfig | grep –c inet6
+
+#Search Files by Given String
+#The –n option for grep is very useful when debugging files during compile errors. It displays the line number in the file of the given search string:
+
+grep –n “main” setup..py
+
+#Search a string Recursively in all Directories
+#If you would like to search for a string in the current directory along with all of the subdirectories, you can specify the –r option to search recursively:
+
+grep –r “function” *
+
