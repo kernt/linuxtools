@@ -41,3 +41,9 @@ The locate command is often the simplest and quickest way to find the locations 
 
 For example, the following command uses the star wildcard to display all files on the system that have the .c filename extension:
 # locate "*.c"
+
+
+# search for JayZ with remix mp3 only
+find . –name “*.mp3” | grep –i JayZ | grep –vi “remix”
+
+
