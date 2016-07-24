@@ -1,0 +1,4 @@
+# This is a list of shell commands to run after invoking dpkg/apt-get #
+DPkg::Post-Invoke {"command";};
+DPkg::Post-Invoke {"/path/to/sbin/command";};
+DPkg::Post-Invoke {"/path/to/script";};
