@@ -1,0 +1,4 @@
+# This is a list of shell commands to run before invoking dpkg/apt-get #
+DPkg::Pre-Invoke {"command";};
+DPkg::Pre-Invoke {"/path/to/sbin/command";};
+DPkg::Pre-Invoke {"/path/to/script";};
