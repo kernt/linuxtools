@@ -1,4 +1,5 @@
-# This is a list of shell commands to run before invoking dpkg/apt-get #
+# This is a list of shell commands to run before invoking dpkg/apt-get
+# http://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/
 DPkg::Pre-Invoke {"command";};
 DPkg::Pre-Invoke {"/path/to/sbin/command";};
 DPkg::Pre-Invoke {"/path/to/script";};
