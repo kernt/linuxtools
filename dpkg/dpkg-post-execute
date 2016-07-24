@@ -1,4 +1,5 @@
-# This is a list of shell commands to run after invoking dpkg/apt-get #
+# This is a list of shell commands to run after invoking dpkg/apt-get 
+# http://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/
 DPkg::Post-Invoke {"command";};
 DPkg::Post-Invoke {"/path/to/sbin/command";};
 DPkg::Post-Invoke {"/path/to/script";};
