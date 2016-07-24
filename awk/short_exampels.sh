@@ -256,3 +256,5 @@ Use wget grab all of a certain type of file listed on a web page and put them in
 wget -r -l1 --no-parent -A "*.jpg" http://www.website.com/pictures/ 
 
 
+## Use awk to trim leading and trailing whitespace
+echo "${output}" | awk '{gsub(/^ +| +$/,"")} {print "=" $0 "="}'
