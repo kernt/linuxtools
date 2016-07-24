@@ -25,6 +25,10 @@
  # Füge eine Leerzeile über und unter jeder Zeile ein, die "regex" enthält
  sed '/regex/{x;p;x;G;}'
 
+
+# Remove (Trim) White Spaces From String / Variable
+
+echo "${output}" | sed -e 's/^[ \t]*//'
 ###### Nummerierung ##################################################################################################
 
  # Nummeriere alle Zeilen (linksbündig). Der Tabulator anstelle von Leerzeichen
