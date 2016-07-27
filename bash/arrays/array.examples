@@ -1,0 +1,72 @@
+# define simple arrey
+
+array=("etc" "bin" "bla")
+  for i in "${array[@]}"
+do
+
+# add to array 
+array+=("sbin")
+ # stout the new array element
+ echo $i
+done
+
+#Length of arrayName = No. of elements present in arrayName
+
+${#ArrayName[@]}
+
+#Length of arrayName[index] = No. of characters in arrayName[index]
+
+${#arrayName[index]}
+
+#Concatenate Two Arrays
+
+arrayName1=(value1 value2 value3 .. valueN)
+arrayName2=(VALUE1 VALUE2 VALUE3 .. VALUEn)
+
+newArray=("${arrayName1[@]}" "${arrayName2[@]}")
+
+#Example:
+
+#!/bin/bash
+Linux=(Ubuntu LinuxMint CentOS Fedora)
+Windows=(WinXP Win7 Win8)
+
+LinWin=("${Linux[@]}" "${Windows[@]}")
+echo ${LinWin[@]}
+
+#Result:
+
+#Ubuntu LinuxMint CentOS Fedora WinXP Win7 Win8
+
+
+
+
+##Load Content of a File into an Array
+
+##You can load the content of the file line by line into an array.
+
+#Example file
+$ cat logfile
+Welcome
+to
+thegeekstuff
+Linux
+Unix
+
+$ cat loadcontent.sh
+#!/bin/bash
+filecontent=( `cat "logfile" `)
+
+for t in "${filecontent[@]}"
+  do
+    echo $t
+  done
+echo "Read file content!"
+
+$ ./loadcontent.sh
+Welcome
+to
+thegeekstuff
+Linux
+Unix
+Read file content!
