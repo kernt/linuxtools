@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+#
+#
+#Different Types of IPCS
+
+
+#There are various IPC’s which allows a process to communicate with another processes, either in the same computer or different computer in the same network.
+#
+#    Pipes – Provides a way for processes to communicate with each another by exchanging messages. Named pipes provide a way for processes running on different computer systems to communicate over the network.
+#    Shared Memory – Processes can exchange values in the shared memory. One process will create a portion of memory which other process can access.
+#    Message Queue – It is a structured and ordered list of memory segments where processes store or retrieve data.
+#    Semaphores – Provides a synchronizing mechanism for processes that are accessing the same resource. No data is passed with a semaphore; it simply coordinates access to shared resources.
+#
+
+
+# Source : http://www.thegeekstuff.com/2010/08/ipcs-command-examples/
+
+# List all the IPC facility
+ipcs -a
+
+# List all the Message Queue
+ipcs -q
+
+# List all the Semaphores
+ipcs -s
+
+# List all the Shared Memory
+ipcs -m
+
+# Detailed information about an IPC facility
+ipcs -q -i 32768
+
+# Lists the Limits for IPC facility
+ipcs -m -l
+
+#List Creator and Owner Details for IPC Facility
+ipcs -m -c
+
+#Process ids that accessed IPC facility recently
+ipcs -m -p
+
+#Last Accessed Time
+ipcs -s -t
+
+#Status of current usage
+ipcs -u
