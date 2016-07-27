@@ -1,3 +1,5 @@
+# Source : http://www.cyberciti.biz/faq/bash-for-loop-array/
+
 # define simple arrey
 
 array=("etc" "bin" "bla")
