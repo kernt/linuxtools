@@ -1,0 +1,65 @@
+#! /bin/bash
+#
+################################################################################
+#  
+#  Volltextsuche V-1.0
+#  
+#  Dieses Programm durchsucht alle Dateien in allen Unterordnern des aktuellen
+#  Verzeichniss nach einer Zeichenketten.
+#
+################################################################################
+#  
+#  Copyright (C) 2011 by Johannes Storm <jo-master@gmx.de>
+#  
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#  
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+#  General Public License for more details.
+#  
+#  
+#  Benutzung:
+#  - kopiere dieses Skript in den Nautilus-Skript Ordner und mache es ausführbar
+#  - wähle ein Verzeichnis in Nautilus an und starte dieses Skript aus dem
+#    Kontextmenü
+#  - gebe die Suchwörter ein
+#  
+#  
+#  erforderliche Software:
+#  - coreutils
+#  - zenity
+#  
+################################################################################
+
+# check for zenity
+gui=$(which zenity)
+if [ ! -x "$gui" ];
+then
+    echo "Zenity wird benötigt: 'sudo apt-get install zenity"
+    exit 0
+fi
+
+
+# ask for search string
+SEARCHSTRING=$(zenity --entry \
+                      --text "Suchanfrage" \
+                      --title "Zeichenketten für die Suche" \
+                      --width="500")
+if [ -z "${SEARCHSTRING}" ];
+then
+    exit 0
+fi
+
+
+# try to find something
+find ./ -type f -exec grep -q "${SEARCHSTRING}" {} \; -print |\
+  tee >(sleep 1; zenity --progress --title="Suchen ..." --pulsate --auto-close) |\
+  zenity --text-info --title "Suchergebnisse" --width="500" --height="500"
+
+
+exit 0
+
