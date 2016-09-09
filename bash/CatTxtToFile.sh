@@ -22,6 +22,11 @@
 #
 FILEOUT=$1
 TXT=$2
-cat > $FILEOUT << EOF
-$TXT
+
+cattext() {
+cat > ${FILEOUT} << EOF
+${TXT}
 EOF
+}
+
+
