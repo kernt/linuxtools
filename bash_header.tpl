@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Sources:   http://www.gmarik.info/blog/2016/5-tips-for-solid-bash-code/
+#            https://natelandau.com/boilerplate-shell-script-template/
+#            https://github.com/natelandau/shell-scripts
 #            
-# Script-Name	: $@.sh
+# Script-Name	: myscriptz.sh
 # Version	    : 0.01
 # Autor		     : Tobias Kern
 # Datum		     : $DATE
@@ -9,7 +11,7 @@
 # Depends     :
 # Use         :       
 # 
-# Example:
+# Example: 
 #
 # Description:
 ###########################################################################################
