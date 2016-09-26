@@ -1,0 +1,4 @@
+#!/bin/bash
+# 
+# 
+sar -u -o datafile 2 3
