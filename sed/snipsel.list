@@ -429,9 +429,9 @@ Falls die ausfürungsgeschwindigkeit wegen großen Dateien oder langsamen CPUs
 bzw. Festplatten erhöht werden muss, können Ersetzungen beschleunigt werden,
 indem der gesuchte Ausdruck vor dem "s/.../.../" genannt wird. Es gilt:
 
- sed 's/foo/bar/g' filename         # Normales Suchen & Ersetzen
- sed '/foo/ s/foo/bar/g' filename   # Schnellere Version
- sed '/foo/ s//bar/g' filename      # sed Kurzschreibweise
+ sed -i 's/foo/bar/g' filename         # Normales Suchen & Ersetzen
+ sed -i '/foo/ s/foo/bar/g' filename   # Schnellere Version
+ sed -i '/foo/ s//bar/g' filename      # sed Kurzschreibweise
 
 Wenn bei der Auswahl oder Löschung von Zeilen nur Zeilen aus dem Dateianfang
 ausgegeben werden sollen, verkürzt bei großen Dateien ein "quit" Befehl (q)
@@ -439,3 +439,8 @@ die Bearbeitungszeit erheblich. Daher:
 
  sed -n '45,50p' filename           # Ausgabe der Zeilen 45-50 einer Datei
  sed -n '51q;45,50p' filename       # dito, aber viel schneller.
+s is used to replace the found expression "foo" with "bar"
+
+g stands for "global", meaning to do this for the whole line. If you leave off the g and "foo" appears twice on the same line, only the first "foo" is changed to "bar".
+-i option is used to edit in place on filename.
+-e option indicates the expression/command to run.
