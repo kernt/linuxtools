@@ -44,7 +44,7 @@ dhcpHWAddress: ethernet $MACADDRESS
 dhcpStatements: fixed-address $IP
 dNSTTL: 3600
 
-" > adduser.ldif
+" > dhcpHost.ldif
 
 # very impotent last empty line
 
