@@ -1,5 +1,5 @@
 #!/bin/bash
-# yesnobox.sh - An inputbox demon shell script
+#An inputbox demon shell script
 OUTPUT="/tmp/input.txt"
 
 # create empty file
