@@ -1,0 +1,39 @@
+#!/bin/bash
+# 
+#
+#
+# Variablen
+IPTABLES="/sbin/iptables"
+EXTERN_IP="192.168.1.11"
+EXTDEV="eth1"
+INTDEV="eth0"
+
+# Netz-Rechner
+router01="192.168.8.1"
+JIRA="192.168.8.34"
+DEV01VM="192.168.8.35"
+
+# Paket Weiterleitung aktivieren
+IPV4FORWARD= $(sysctl net.ipv4.ip_forward | awk '{ print $NF }')
+
+if [ "$IPV4FORWARD" = "0" ]
+ then
+   sysctl -w net.ipv4.ip_forward=1
+   echo "ipv4 Forwarding musste gesezt werden"
+fi
+
+# aufraeumen von evt. vorhandenen alten Regeln
+$IPTABLES -F
+$IPTABLES -t nat -F
+$IPTABLES -X
+
+# Maskiere Pakete fuer Weiterleitung nach aussen.
+$IPTABLES -t nat -A POSTROUTING -o $EXTDEV -j MASQUERADE
+
+# Maskiere Pakete fuer Weiterleitung nach innen.
+$IPTABLES -t nat -A POSTROUTING -o $INTDEV -j MASQUERADE
+
+# erlaube Zugriff von aussen auf Rechner
+$IPTABLES -A FORWARD -i $EXTDEV -o $INTDEV -j ACCEPT
+$IPTABLES -A INPUT   -i $EXTDEV -j ACCEPT
+$IPTABLES -A OUTPUT  -o $EXTDEV -j ACCEPT
