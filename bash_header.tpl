@@ -3,13 +3,13 @@
 #            https://natelandau.com/boilerplate-shell-script-template/
 #            https://github.com/natelandau/shell-scripts
 #            
-# Script-Name	: myscriptz.sh
-# Version	    : 0.01
-# Autor		     : Tobias Kern
-# Datum		     : $(date)
-# Lizenz	     : GPLv3
-# Depends     : 
-# Use         : 
+# Script-Name		: myscriptz.sh
+# Version	        : 0.0.1
+# Autor		        : Tobias Kern
+# Datum		        : $(date)
+# Lizenz	        : GPLv3
+# Depends     		: 
+# Use         		: 
 # 
 # Example: 
 #
