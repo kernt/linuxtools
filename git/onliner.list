@@ -1,0 +1,5 @@
+#This command will find all directories, 1 level deep. Then it will go into them (pushd), issue the command (git gc) and go back to the above directory (popd).
+ for D in `find . -maxdepth 1 -type d`; do pushd $D; echo "==> DIR ${D}, COMMAND: git gc"; git gc; popd; done
+
+# Copy file to all your software source code directories
+for D in `find . -maxdepth 1 -type d`; do pushd $D; echo "==> DIR ${D}, COMMAND: cp ~/LICENSE ./"; cp ~/LICENSE ./; popd; done
