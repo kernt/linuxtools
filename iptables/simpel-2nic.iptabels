@@ -3,7 +3,7 @@
 #
 #
 # Variablen
-IPTABLES="/sbin/iptables"
+IPTABLES="$(type -p iptables)"
 EXTERN_IP="192.168.1.11"
 EXTDEV="eth1"
 INTDEV="eth0"
