@@ -23,17 +23,17 @@ if [ "$IPV4FORWARD" = "0" ]
 fi
 
 # aufraeumen von evt. vorhandenen alten Regeln
-$IPTABLES -F
-$IPTABLES -t nat -F
-$IPTABLES -X
+${IPTABLES} -F
+${IPTABLES} -t nat -F
+${IPTABLES} -X
 
 # Maskiere Pakete fuer Weiterleitung nach aussen.
-$IPTABLES -t nat -A POSTROUTING -o $EXTDEV -j MASQUERADE
+${IPTABLES} -t nat -A POSTROUTING -o ${EXTDEV} -j MASQUERADE
 
 # Maskiere Pakete fuer Weiterleitung nach innen.
-$IPTABLES -t nat -A POSTROUTING -o $INTDEV -j MASQUERADE
+${IPTABLES} -t nat -A POSTROUTING -o ${INTDEV} -j MASQUERADE
 
 # erlaube Zugriff von aussen auf Rechner
-$IPTABLES -A FORWARD -i $EXTDEV -o $INTDEV -j ACCEPT
-$IPTABLES -A INPUT   -i $EXTDEV -j ACCEPT
-$IPTABLES -A OUTPUT  -o $EXTDEV -j ACCEPT
+${IPTABLES} -A FORWARD -i ${EXTDEV} -o ${INTDEV} -j ACCEPT
+${IPTABLES} -A INPUT   -i ${EXTDEV} -j ACCEPT
+${IPTABLES} -A OUTPUT  -o ${EXTDEV} -j ACCEPT
