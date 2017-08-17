@@ -1,4 +1,6 @@
 #!/bin/bash
+# Todo add help function 
+#
 PACKAGE=$1
 VERSION=$2
 
