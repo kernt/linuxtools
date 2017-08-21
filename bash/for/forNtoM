@@ -1,0 +1,5 @@
+# For loop 5 times
+for i in {1..5}
+do
+	cust_func $i & # Put a function in the background
+done
