@@ -20,7 +20,7 @@ OPTIONS="--create --verbose --one-file-system \
 FILESYSTEMS="/etc /root"
 
 MUTT="/usr/bin/mutt"
-ADMINMAIL="backup-admin@localhost"
+ADMINMAIL="root@localhost"
 
 # -------------------------------------------------------------------------
 # Funktionen
