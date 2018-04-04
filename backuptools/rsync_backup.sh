@@ -2,7 +2,7 @@
 #
 #
 # Simple backup with rsync (version 2011-03-10)
-# 
+# Info: Just for testing
 # local-mode, tossh-mode, fromssh-mode
 
 # sources and target MUST end WITH slash
@@ -14,7 +14,7 @@ RSYNCCONF="--delete"
 #MOUNTPOINT="/media/backup"     # mountpoint must end WITHOUT slash
 PACKAGES=0	
 MONTHROTATE=1
-MAILREC="tobkern1980@googlemail.com"
+MAILREC="user@example.com"
 
 #SSHUSER="root"
 #SSHPORT=22 
