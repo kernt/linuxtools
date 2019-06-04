@@ -1,5 +1,4 @@
-#!/bin/bach
+#!/bin/bash
 # delete ESDA key from known hosts list
+# 
 ssh-keygen -f "/home/$USER/.ssh/known_hosts" -R $1
-
-
