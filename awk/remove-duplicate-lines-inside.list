@@ -1,4 +1,0 @@
-#!/bin/bash
-#remove duplicate lines inside
-awk '!seen[$0]++' input > output
-awk '!seen[$0]++' data.txt > output.txt
