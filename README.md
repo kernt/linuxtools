@@ -12,3 +12,5 @@ dpkg --get-selections | ssh newhost dpkg --set-selections
 
 is useful but always chooses the latest version, and especially when using testing or unstable, 
 it is sometimes necessary to temporarily downgrade a package from the latest version available.
+
+Will be deletet if portet to new repo
